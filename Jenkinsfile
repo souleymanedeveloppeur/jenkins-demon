@@ -27,6 +27,14 @@ pipeline {
             }
         }
 
+        stage('Check Docker') {
+            steps {
+                sh 'which docker'
+                sh 'docker --version'
+            }
+        }
+
+
         stage('Docker Clean Image') {
             steps {
                 sh """
