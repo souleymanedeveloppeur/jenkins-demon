@@ -56,7 +56,10 @@ pipeline {
 
         stage('Docker Run') {
             steps {
-                sh "docker run -d -p ${PORT_HOST}:${PORT_CONTAINER} --name ${CONTAINER_NAME} ${IMAGE_NAME}"
+               sh """
+                        echo "Running container ${CONTAINER_NAME} on port ${PORT_HOST}:${PORT_CONTAINER}"
+                        docker run -d -p ${PORT_HOST}:${PORT_CONTAINER} --name ${CONTAINER_NAME} ${IMAGE_NAME}
+                    """
             }
         }
     }
